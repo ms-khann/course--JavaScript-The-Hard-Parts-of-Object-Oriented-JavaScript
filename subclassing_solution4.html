@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+class userCreator{
+	constructor(name,score){
+		this.name = name;
+		this.score = score;
+	}
+	sayName(){
+		console.log("hello i am " + this.name);
+	}
+	increase(){
+		this.score++;
+	}
+}
+const user1 = new userCreator('sahil',5);
+console.log(user1);
+
+class paidUser extends userCreator{
+	constructor(name,score,balance){
+		super(name,score);
+		this.balance = balance;
+	}
+	checkBalanece(){
+		console.log(this.balance);
+	}
+	increaseBalance(){
+		this.balance++;
+	}
+}
+
+const user2 = new paidUser('vajid',5,10);
+console.log(user2);
+user2.increaseBalance();
+user2.checkBalanece();
+user2.sayName();
+// console.log();
+</script>
+</body>
+</html>

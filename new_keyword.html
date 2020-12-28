@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function createUser(name,score){
+		this.name = name;
+		this.score = score;
+	}
+	createUser.prototype.inc = function(){
+		this.score++;
+		console.log(this);
+		let obj = function(){
+			function inner(last){
+				this.last = last;
+				console.log(this);
+			}
+			console.log(new inner('khan'));
+		}
+			console.log(this);
+		obj();
+	}
+	let a =new createUser('sahil',1);
+	a.inc();
+	console.log(a.score);
+	// console.log(a.inc());
+</script>
+</body>
+</html>

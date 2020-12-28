@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+	function userCreator (name,score){
+		this.name = name;
+		this.score = score;
+	}
+	userCreator.prototype.sayName = function(){
+		console.log("i am "+this.name)
+	}
+	userCreator.prototype.increment = function(){
+		this.score++;
+	}
+
+	const user1 = new userCreator('sahil',5);
+	const user2 = new userCreator('vajid',6);
+
+	// user1.sayName();
+
+	function paidUserCreator(paidName,paidScore,accountBalance){
+		userCreator.call(this,paidName,paidScore);
+		this.accountBalance = accountBalance;
+	}
+
+	// paidUserCreator.prototype = Object.create(userCreator.prototype);
+	Object.setPrototypeOf(paidUserCreator,userCreator.prototype);
+
+	paidUserCreator.prototype.increaseBalance = function() {
+		// this.accountBalance++;
+		console.log(this);
+		// console.log(this.accountBalance);
+		// console.log(this);
+	}
+
+	const paidUser1 = new paidUserCreator('tarun',5,10);
+	paidUser1.increaseBalance();
+	paidUserCreator.sayName();
+	console.log(paidUserCreator.prototype);
+
+	// paidUser1.checkBalance();
+	// console.log(paidUser1.accountBalance);
+</script>
+</body>
+</html>
